@@ -58,3 +58,24 @@ Puis aller sur `http://localhost:8080` (ou le port indiqué).
 
 3. Le site sera en ligne à l’adresse :  
    `https://alecp6.github.io/OutlawSounds/`
+
+## Déploiement (Vercel)
+
+Le projet est prêt pour Vercel (site statique, pas de build).
+
+**Option A — Via le site Vercel (recommandé)**  
+1. Va sur [vercel.com](https://vercel.com) et connecte-toi (avec ton compte GitHub).  
+2. **Add New** → **Project** → importe le dépôt **AlecP6/OutlawSounds**.  
+3. Vercel détecte un site statique : ne modifie rien, clique sur **Deploy**.  
+4. Une fois le déploiement terminé, tu auras une URL du type :  
+   `https://outlaw-sounds-xxx.vercel.app`  
+   (tu peux ajouter un nom de domaine personnalisé dans les paramètres du projet.)
+
+**Option B — En ligne de commande**  
+1. Installe le CLI : `npm i -g vercel`  
+2. Dans le dossier du projet :  
+   ```bash
+   cd c:\Users\pxksa\Documents\Label
+   vercel
+   ```  
+3. Suis les questions (lien au projet GitHub si tu veux les déploiements automatiques à chaque push).
