@@ -8,7 +8,7 @@ function getConnectionUrl() {
 
 export async function getStore() {
   const url = getConnectionUrl();
-  if (!url) return null;
+  if (!url) return { __error: 'NO_URL' };
   try {
     const { neon } = await import('@neondatabase/serverless');
     const sql = neon(url);
@@ -20,7 +20,7 @@ export async function getStore() {
     return out;
   } catch (e) {
     console.error(e);
-    return null;
+    return { __error: (e && e.message) ? String(e.message) : 'Unknown error' };
   }
 }
 

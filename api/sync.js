@@ -26,12 +26,18 @@ export default async function handler(req, res) {
   try {
     if (req.method === 'GET') {
       const store = await getStore();
-      if (!store) {
-        const hasUrl = !!(process.env.POSTGRES_URL || process.env.DATABASE_URL);
+      if (store && store.__error) {
+        const hint = store.__error === 'NO_URL'
+          ? 'Add POSTGRES_URL in Vercel → Settings → Environment Variables (Production)'
+          : 'Check connection string (copy from Neon dashboard, no psql wrapper). Host typo?';
         return res.status(503).json({
           error: 'Database not configured',
-          hint: hasUrl ? 'Check connection string and redeploy Production' : 'Add POSTGRES_URL in Vercel → Settings → Environment Variables (Production)',
+          detail: store.__error === 'NO_URL' ? undefined : store.__error,
+          hint,
         });
+      }
+      if (!store || typeof store !== 'object') {
+        return res.status(503).json({ error: 'Database not configured', hint: 'Redeploy Production after setting POSTGRES_URL' });
       }
       return res.status(200).json(store);
     }
