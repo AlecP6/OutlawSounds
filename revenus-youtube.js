@@ -15,6 +15,7 @@ function getApiKey() {
 }
 
 function getSons() {
+  if (typeof getStorage === 'function') return getStorage(YOUTUBE_SONS_KEY, []);
   try {
     const raw = localStorage.getItem(YOUTUBE_SONS_KEY);
     return raw ? JSON.parse(raw) : [];
@@ -24,6 +25,7 @@ function getSons() {
 }
 
 function setSons(sons) {
+  if (typeof setStorage === 'function') { setStorage(YOUTUBE_SONS_KEY, sons); return; }
   localStorage.setItem(YOUTUBE_SONS_KEY, JSON.stringify(sons));
 }
 

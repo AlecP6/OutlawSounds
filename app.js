@@ -25,6 +25,13 @@ function getStorage(key, defaultValue = []) {
 
 function setStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
+  if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('outlaw_sync_done')) {
+    fetch('/api/sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: key, data: value }),
+    }).catch(function () {});
+  }
 }
 
 function getCurrentMonthKey() {

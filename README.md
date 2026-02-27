@@ -59,9 +59,21 @@ Puis aller sur `http://localhost:8080` (ou le port indiqué).
 3. Le site sera en ligne à l’adresse :  
    `https://alecp6.github.io/OutlawSounds/`
 
+## Backend (base de données)
+
+Les données peuvent être stockées sur un **backend** (Neon Postgres) en plus du localStorage. Une fois déployé sur Vercel avec la variable d’environnement configurée :
+
+- **Premier chargement** : le site récupère les données depuis l’API et les enregistre dans le localStorage, puis recharge la page.
+- **À chaque modification** (ajout dépense, artiste, etc.) : les données sont envoyées à l’API en plus du localStorage.
+
+**Variable d’environnement requise sur Vercel :**  
+`POSTGRES_URL` = l’URL de connexion Neon (format `postgresql://...`). À créer dans le projet [Neon](https://neon.tech) (projet **OutlawSounds**), puis à renseigner dans Vercel → Project → Settings → Environment Variables.
+
+Sans `POSTGRES_URL`, le site fonctionne comme avant en 100 % localStorage (aucune erreur).
+
 ## Déploiement (Vercel)
 
-Le projet est prêt pour Vercel (site statique, pas de build).
+Le projet est prêt pour Vercel (site statique + API serverless).
 
 **Option A — Via le site Vercel (recommandé)**  
 1. Va sur [vercel.com](https://vercel.com) et connecte-toi (avec ton compte GitHub).  

@@ -1,0 +1,10 @@
+{
+  "name": "outlaw-sounds",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Label RP — Comptabilité & Gestion",
+  "type": "module",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.0"
+  }
+}

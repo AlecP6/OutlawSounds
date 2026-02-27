@@ -10,6 +10,10 @@ desktop.ini
 *.swo
 *~
 
+# Dependencies
+node_modules/
+
 # Local / env (si tu ajoutes des configs plus tard)
 .env
 .env.local
+.env*.local
