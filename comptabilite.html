@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comptabilité — Label RP</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <button type="button" class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="logo">Outlaw Sounds</a>
+    <div class="nav-overlay" aria-hidden="true"></div>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" class="nav-link">Tableau de bord</a>
+      <a href="comptabilite.html" class="nav-link active">Comptabilité</a>
+      <a href="historique-comptable.html" class="nav-link">Historique</a>
+      <a href="suivi-subventions.html" class="nav-link">Subventions</a>
+      <a href="revenus-youtube.html" class="nav-link">Revenus YouTube</a>
+      <a href="gestion.html" class="nav-link">Gestion</a>
+      <a href="suivi-artistes.html" class="nav-link">Artistes</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">Comptabilité</h1>
+
+    <section class="section-block">
+      <h2>Ajouter une dépense</h2>
+      <form id="form-mouvement" class="form-row">
+        <div class="form-group">
+          <label for="libelle">Libellé</label>
+          <input type="text" id="libelle" placeholder="Ex: Achat matériel" required>
+        </div>
+        <div class="form-group">
+          <label for="montant">Montant (€)</label>
+          <input type="number" id="montant" step="0.01" min="0" placeholder="0" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" required>
+        </div>
+        <div class="form-group" style="display: flex; align-items: flex-end;">
+          <button type="submit" class="btn">Enregistrer</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="section-block">
+      <h2>Revenus récents</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Libellé</th>
+              <th>Montant</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody-revenus">
+            <tr><td colspan="4" class="empty-state">Aucun revenu enregistré.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>Dépenses récentes</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Libellé</th>
+              <th>Montant</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody-depenses">
+            <tr><td colspan="4" class="empty-state">Aucune dépense enregistrée.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>Bilan de la semaine</h2>
+      <p class="tagline" style="margin-bottom: 0.75rem; font-size: 0.85rem;">Total revenus = entrées manuelles + subventions + revenus YouTube (selon date de la semaine).</p>
+      <div class="quick-stats">
+        <div class="stat">
+          <span class="stat-label">Total revenus</span>
+          <span class="stat-value amount-positive" id="total-revenus">0 €</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Total dépenses</span>
+          <span class="stat-value amount-negative" id="total-depenses">0 €</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Solde de la semaine</span>
+          <span class="stat-value" id="solde-mois">0 €</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>2026 - Outlaw Sounds</span>
+  </footer>
+  <script src="app.js"></script>
+  <script src="comptabilite.js"></script>
+</body>
+</html>

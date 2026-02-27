@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suivi des artistes — Label RP</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <button type="button" class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="logo">Outlaw Sounds</a>
+    <div class="nav-overlay" aria-hidden="true"></div>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" class="nav-link">Tableau de bord</a>
+      <a href="comptabilite.html" class="nav-link">Comptabilité</a>
+      <a href="historique-comptable.html" class="nav-link">Historique</a>
+      <a href="suivi-subventions.html" class="nav-link">Subventions</a>
+      <a href="revenus-youtube.html" class="nav-link">Revenus YouTube</a>
+      <a href="gestion.html" class="nav-link">Gestion</a>
+      <a href="suivi-artistes.html" class="nav-link active">Artistes</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">Suivi des artistes</h1>
+    <p class="tagline" style="margin-bottom: 1.5rem;">Vue d’ensemble des artistes, leurs contrats et sorties. <a href="gestion.html" class="nav-link">Modifier dans Gestion →</a></p>
+
+    <section class="section-block">
+      <h2>Récapitulatif</h2>
+      <div class="quick-stats">
+        <div class="stat">
+          <span class="stat-label">Nombre d’artistes</span>
+          <span class="stat-value" id="nb-artistes-suivi">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Contrats en cours</span>
+          <span class="stat-value" id="nb-contrats-suivi">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Sorties enregistrées</span>
+          <span class="stat-value" id="nb-sorties-suivi">0</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>Fiche par artiste</h2>
+      <div id="fiches-artistes">
+        <p class="empty-state">Aucun artiste. <a href="gestion.html">Ajouter des artistes dans Gestion</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>2026 - Outlaw Sounds</span>
+  </footer>
+  <script src="app.js"></script>
+  <script src="suivi-artistes.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Label RP — Tableau de bord</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <button type="button" class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="logo">Outlaw Sounds</a>
+    <div class="nav-overlay" aria-hidden="true"></div>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" class="nav-link active">Tableau de bord</a>
+      <a href="comptabilite.html" class="nav-link">Comptabilité</a>
+      <a href="historique-comptable.html" class="nav-link">Historique</a>
+      <a href="suivi-subventions.html" class="nav-link">Subventions</a>
+      <a href="revenus-youtube.html" class="nav-link">Revenus YouTube</a>
+      <a href="gestion.html" class="nav-link">Gestion</a>
+      <a href="suivi-artistes.html" class="nav-link">Artistes</a>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <section class="hero">
+      <h1>Tableau de bord</h1>
+      <p class="tagline">Comptabilité & gestion du label</p>
+    </section>
+
+    <section class="cards">
+      <a href="comptabilite.html" class="card card-compta">
+        <span class="card-icon">📊</span>
+        <h2>Comptabilité</h2>
+        <p>Revenus, dépenses, bilans et rapports financiers.</p>
+      </a>
+      <a href="historique-comptable.html" class="card">
+        <span class="card-icon">📜</span>
+        <h2>Historique comptable</h2>
+        <p>Tous les mouvements par date, avec filtre par période.</p>
+      </a>
+      <a href="suivi-subventions.html" class="card">
+        <span class="card-icon">🏛️</span>
+        <h2>Suivi des subventions</h2>
+        <p>Enregistrement et total des subventions perçues.</p>
+      </a>
+      <a href="revenus-youtube.html" class="card">
+        <span class="card-icon">▶️</span>
+        <h2>Revenus YouTube</h2>
+        <p>Calcul automatique des revenus par son (350 $/vue sans clip, 500 $/vue avec clip).</p>
+      </a>
+      <a href="gestion.html" class="card card-gestion">
+        <span class="card-icon">🎤</span>
+        <h2>Gestion</h2>
+        <p>Artistes, contrats, sorties et planning.</p>
+      </a>
+      <a href="suivi-artistes.html" class="card">
+        <span class="card-icon">👤</span>
+        <h2>Suivi des artistes</h2>
+        <p>Fiches artistes avec contrats et sorties.</p>
+      </a>
+    </section>
+
+    <section class="quick-stats">
+      <div class="stat">
+        <span class="stat-label">Revenus de la semaine</span>
+        <span class="stat-value" id="revenus-mois">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Dépenses de la semaine</span>
+        <span class="stat-value" id="depenses-mois">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Artistes signés</span>
+        <span class="stat-value" id="nb-artistes">—</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>2026 - Outlaw Sounds</span>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenus YouTube — Label RP</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <button type="button" class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="logo">Outlaw Sounds</a>
+    <div class="nav-overlay" aria-hidden="true"></div>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" class="nav-link">Tableau de bord</a>
+      <a href="comptabilite.html" class="nav-link">Comptabilité</a>
+      <a href="historique-comptable.html" class="nav-link">Historique</a>
+      <a href="suivi-subventions.html" class="nav-link">Subventions</a>
+      <a href="revenus-youtube.html" class="nav-link active">Revenus YouTube</a>
+      <a href="gestion.html" class="nav-link">Gestion</a>
+      <a href="suivi-artistes.html" class="nav-link">Artistes</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">Revenus YouTube</h1>
+    <p class="tagline" style="margin-bottom: 1.5rem;">Calcul automatique des revenus selon les vues et les tarifs du label (lien YouTube par son).</p>
+
+    <section class="section-block">
+      <h2>Ajouter un son</h2>
+      <form id="form-son" class="form-row">
+        <div class="form-group" style="flex: 2;">
+          <label for="url-youtube">Lien YouTube</label>
+          <input type="url" id="url-youtube" placeholder="https://www.youtube.com/watch?v=... ou https://youtu.be/...">
+        </div>
+        <div class="form-group">
+          <label for="artiste-son">Artiste (répartition selon contrat)</label>
+          <select id="artiste-son">
+            <option value="">— Aucun —</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="type-publication">Type de vidéo</label>
+          <select id="type-publication">
+            <option value="musique">Sans clip (350 $/vue)</option>
+            <option value="clip">Avec clip (500 $/vue)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date-publication">Date de publication (calendrier compta)</label>
+          <input type="date" id="date-publication" required>
+        </div>
+        <div class="form-group" style="display: flex; align-items: flex-end;">
+          <button type="submit" class="btn">Ajouter et récupérer les vues</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="section-block">
+      <h2>Tarifs (référence)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Type de vidéo</th>
+              <th>Tarif</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Vidéo sans clip</td><td>350 $ par vue</td></tr>
+            <tr><td>Vidéo avec clip</td><td>500 $ par vue</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>Sons et calcul des revenus</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Titre</th>
+              <th>Date publication</th>
+              <th>Artiste</th>
+              <th>Type</th>
+              <th>Lien</th>
+              <th>Vues</th>
+              <th>Part label</th>
+              <th>Part artiste</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody-sons">
+            <tr><td colspan="10" class="empty-state">Aucun son. Ajoute un lien YouTube ci-dessus.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="quick-stats" style="margin-top: 1rem;">
+        <div class="stat">
+          <span class="stat-label">Part label (revenus du label)</span>
+          <span class="stat-value amount-positive" id="total-youtube">0 $</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Part artistes</span>
+          <span class="stat-value" id="total-youtube-artistes">0 $</span>
+        </div>
+      </div>
+      <div style="margin-top: 1rem;">
+        <button type="button" class="btn btn-secondary" id="btn-refresh-all">Actualiser toutes les vues</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>2026 - Outlaw Sounds</span>
+  </footer>
+  <script src="app.js"></script>
+  <script src="revenus-youtube.js"></script>
+</body>
+</html>
