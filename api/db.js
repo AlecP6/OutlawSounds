@@ -1,8 +1,14 @@
-const url = process.env.POSTGRES_URL;
-const hasDb = url && typeof url === 'string' && url.length > 0;
+function getConnectionUrl() {
+  const url = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+  if (!url || typeof url !== 'string') return null;
+  const trimmed = url.trim();
+  if (trimmed.length === 0) return null;
+  return trimmed;
+}
 
 export async function getStore() {
-  if (!hasDb) return null;
+  const url = getConnectionUrl();
+  if (!url) return null;
   try {
     const { neon } = await import('@neondatabase/serverless');
     const sql = neon(url);
@@ -19,7 +25,8 @@ export async function getStore() {
 }
 
 export async function setStoreKey(key, data) {
-  if (!hasDb) return false;
+  const url = getConnectionUrl();
+  if (!url) return false;
   try {
     const { neon } = await import('@neondatabase/serverless');
     const sql = neon(url);

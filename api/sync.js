@@ -27,7 +27,11 @@ export default async function handler(req, res) {
     if (req.method === 'GET') {
       const store = await getStore();
       if (!store) {
-        return res.status(503).json({ error: 'Database not configured' });
+        const hasUrl = !!(process.env.POSTGRES_URL || process.env.DATABASE_URL);
+        return res.status(503).json({
+          error: 'Database not configured',
+          hint: hasUrl ? 'Check connection string and redeploy Production' : 'Add POSTGRES_URL in Vercel → Settings → Environment Variables (Production)',
+        });
       }
       return res.status(200).json(store);
     }
